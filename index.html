@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				background: #f6f6f6;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #000;
+			}
+			
+			.clearfix:after {
+				content: "";
+				height: 0;
+				display: block;
+				clear: both;
+			}
+			.position_page{
+				width: 100%;
+				height: 100%;
+				background: #f6f6f6;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 1000;
+			}
+			.main_title {
+				position: fixed;
+				width: 100%;
+				text-align: center;
+				height: 35px;
+				line-height: 35px;
+				border-bottom: 1px solid #ccc;
+				background: #f6f6f6;
+				z-index: 10000;
+			}
+			
+			.scroll_contener {
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.serch_contener {
+				width: 100%;
+				position: absolute;
+				top: 35px;
+				left: 0;
+				padding-bottom: 35px;
+			}
+			
+			.serch_title {
+				background: #f6f6f6;
+				width: 100%;
+				border-top: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.serch_title div {
+				width: 90%;
+				height: 45px;
+				line-height: 45px;
+				margin: 0 auto;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+			}
+			
+			#serch_inp {
+				width: 60%;
+				height: 35px;
+				font-size: 12px;
+				padding-left: 35px;
+				background: #fff;
+				border: none;
+				outline: none;
+				border-radius: 5px;
+				margin-right: 10%;
+				margin-top: 5px;
+			}
+			
+			.city_module {
+				padding: 0 30px 0 15px;
+				background: #FFFFFF;
+				margin-bottom: 30px;
+			}
+			
+			.city_module ul {
+				width: 100%;
+				/*display: flex;
+				justify-content: center;
+				flex-wrap: wrap;*/
+			}
+			
+			.city_module li {
+				float: left;
+				width: 30%;
+				height: 40px;
+				line-height: 40px;
+				/*padding: 5px;*/
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				text-align: center;
+				box-sizing: border-box;
+				margin-right: 5%;
+				margin-bottom: 10px;
+			}
+			
+			.city_module li:nth-child(3n) {
+				margin-right: 0;
+			}
+			
+			.small_title,
+			.letter_title {
+				line-height: 35px;
+			}
+			
+			.letter_title {
+				padding-left: 15px;
+			}
+			
+			.city_list_module ul {
+				padding: 0 30px 0 15px;
+				background: #FFFFFF;
+			}
+			
+			.city_list_module ul li {
+				line-height: 40px;
+			}
+			
+			#search_bar {
+				height: 85%;
+				position: fixed;
+				width: 30px;
+				right: 0;
+				top: 75px;
+			}
+			
+			#search_bar ul {
+				height: 100%;
+			}
+			
+			#search_bar ul li {
+				width: 100%;
+				text-align: center;
+				font-size: 12px;
+				height: 3.33%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="position_page">
+
+			<h4 class="main_title">选择城市</h4>
+			<div class="scroll_contener">
+				<div class="serch_contener">
+					<div class="serch_title serch_module">
+						<div class="clearfix">
+							<input type="text" id="serch_inp" value="" placeholder="请输入城市名查询" />
+							<span>取消</span>
+						</div>
+					</div>
+
+					<div id="serch_position" class="city_module serch_module">
+						<p class="small_title">当前定位城市</p>
+						<ul class="clearfix">
+							<li></li>
+						</ul>
+					</div>
+					<div class="city_module serch_module">
+						<p class="small_title">历史纪录</p>
+						<ul class="clearfix">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="city_module serch_module">
+						<p class="small_title">热门推荐</p>
+						<ul class="clearfix">
+							<li code="410100">郑州市</li>
+							<li code="411300">南阳市</li>
+							<li code="411500">信阳市</li>
+							<li code="410700">新乡市</li>
+							<li code="411000">许昌市</li>
+							<li code="410600">鹤壁市</li>
+							<li code="410500">安阳市</li>
+						</ul>
+					</div>
+
+					<div id="cityList_contener" class="cityList_contener"></div>
+
+				</div>
+			</div>
+
+			<div id="search_bar">
+				<ul>
+					<li></li>
+					<li>定位</li>
+					<li>最近</li>
+					<li>热门</li>
+					<li>A</li>
+					<li>B</li>
+					<li>C</li>
+					<li>D</li>
+					<li>E</li>
+					<li>F</li>
+					<li>G</li>
+					<li>H</li>
+					<li>I</li>
+					<li>J</li>
+					<li>K</li>
+					<li>L</li>
+					<li>M</li>
+					<li>N</li>
+					<li>O</li>
+					<li>P</li>
+					<li>Q</li>
+					<li>R</li>
+					<li>S</li>
+					<li>T</li>
+					<li>U</li>
+					<li>V</li>
+					<li>W</li>
+					<li>X</li>
+					<li>Y</li>
+					<li>Z</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				var leters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+				var html = "";
+				$.each(leters, function(i, v) {
+					html += '<div id="serch_' + v + '" class="city_list_module serch_module"><p class="letter_title">' + v + '</p><ul></ul></div>';
+				});
+				$("#cityList_contener").html(html);
+
+				$.ajax({
+					type: "get",
+					url: "js/city.json",
+					async: true,
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+
+						$.each(data, function(i, v) {
+							$.each($(".letter_title"), function(j, val) {
+								if(v.firstLetter == $(".letter_title").eq(j).html()) {
+									var li_node = $("<li code='" + v.code + "'>" + v.name + "</li>");
+									$(".letter_title").eq(j).next("ul").append(li_node);
+								}
+							});
+
+						});
+
+						initScroll();
+
+					}
+				});
+
+				function initScroll() {
+					var myScroll = new IScroll('.scroll_contener', {
+						hScrollbar: false,
+						vScroll: true,
+						hideScrollbar: true //是否隐藏滚动条  
+					});
+					$("#search_bar li").on("click", function() {
+
+						var scrollTop = offSet($(".serch_module").eq($(this).index()).get(0)).top - 36;
+						myScroll.scrollTo(0, -scrollTop, 100, IScroll.utils.ease.elastic);
+					})
+				}
+
+				function offSet(curEle) {
+					var totalLeft = null;
+					var totalTop = null;
+					var par = curEle.offsetParent;
+					//首先把自己本身的相加
+					totalLeft += curEle.offsetLeft;
+					totalTop += curEle.offsetTop;
+					//现在开始一级一级往上查找，只要没有遇到body，我们就把父级参照物的边框和偏移相加
+					while(par) {
+						if(navigator.userAgent.indexOf("MSIE 8.0") === -1) {
+							//不是IE8我们才进行累加父级参照物的边框
+							totalTop += par.clientTop;
+							totalLeft += par.clientLeft;
+						}
+						//把父级参照物的偏移相加
+						totalTop += par.offsetTop;
+						totalLeft += par.offsetLeft;
+						par = par.offsetParent;
+					}
+					return {
+						left: totalLeft,
+						top: totalTop
+					};
+				}
+			})
+		</script>
+	</body>
+
+</html>
