@@ -259,6 +259,9 @@
 
 		<script type="text/javascript">
 			$(function() {
+				$("body").bind("touchmove",function(e){
+					e.preventDefault();
+				});
 				var leters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 				var html = "";
 				$.each(leters, function(i, v) {
@@ -273,7 +276,7 @@
 					dataType: "json",
 					success: function(data) {
 						console.log(data);
-
+						
 						$.each(data, function(i, v) {
 							$.each($(".letter_title"), function(j, val) {
 								if(v.firstLetter == $(".letter_title").eq(j).html()) {
@@ -283,7 +286,7 @@
 							});
 
 						});
-
+						$("body").unbind("touchmove");
 						initScroll();
 
 					}
